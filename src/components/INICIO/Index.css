@@ -1,0 +1,93 @@
+.Inicio {
+  height: auto;
+  text-align: center;
+  background-color: white;
+  padding: 25px;
+}
+
+.Inicio .cards-container,
+footer .footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.Inicio .section-cards-header {
+  margin-bottom: 10px;
+}
+
+.Inicio section img {
+  width: 150px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.Inicio .cards-container section {
+  width: 350px;
+  padding: 15px 0;
+  color: #505765;
+  border-radius: 15px;
+}
+
+.Inicio .cards-container section:hover {
+  border: 1px solid #2F4F4F;
+
+  -webkit-box-shadow: 0px 0px 26px 14px rgba(47, 79, 79, 1);
+  -moz-box-shadow: 0px 0px 26px 14px rgba(47, 79, 79, 1);
+  box-shadow: 0px 0px 26px 14px rgba(47, 79, 79, 1);
+}
+
+
+.Inicio .cards-container section h3 {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #505765
+}
+
+.Inicio .cards-container .section-cards-header h1 {
+  color: #505765;
+  margin-bottom: 40px;
+}
+
+.Inicio .cards-container section p {
+  margin-bottom: 10px;
+}
+
+
+/*MODALES*/
+.modal-dialog {
+  text-align: center;
+}
+
+.modal-footer {
+  justify-content: center;
+}
+
+div.fade.modal.show {
+  width: 100vw;
+}
+
+button.btn.btn-secondary {
+  background-color: white;
+  color: #2F4F4F
+}
+
+button.btn.btn-secondary:hover {
+  -webkit-box-shadow: 0px 0px 26px 14px rgba(47, 79, 79, 1);
+  -moz-box-shadow: 0px 0px 26px 14px rgba(47, 79, 79, 1);
+  box-shadow: 0px 0px 26px 14px rgba(47, 79, 79, 1);
+}
+
+button.btn.btn-primary:hover {
+  background-color: white;
+  color: #2F4F4F;
+  font-weight: bold;
+  -webkit-box-shadow: 0px 0px 26px 14px rgba(47, 79, 79, 1);
+  -moz-box-shadow: 0px 0px 26px 14px rgba(47, 79, 79, 1);
+  box-shadow: 0px 0px 26px 14px rgba(47, 79, 79, 1);
+}
+
+button.btn.btn-primary {
+  background-color: #2F4F4F;
+  color: white;
+}

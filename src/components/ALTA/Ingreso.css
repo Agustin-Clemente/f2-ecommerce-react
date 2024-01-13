@@ -1,0 +1,92 @@
+.Ingreso label {
+    text-transform: capitalize;
+}
+
+.Ingreso .alta-form {
+    background-color: #2F4F4F;
+    opacity: 0.8;
+    width: 60%;
+    margin: 20px auto;
+    padding: 30px;
+    color: white;
+    border-radius: 20px;
+}
+
+@media (max-width: 576px) {
+    .Ingreso .alta-form {
+        width: 90%;
+        margin: 20px auto;
+        padding: 30px;
+    }
+}
+
+.Ingreso .alta-form .form-group {
+    text-align: center;
+    padding: 3px;
+}
+
+
+/*BOTON*/
+.Ingreso .alta-form button.btn.btn-success,
+.Ingreso .alta-form button.btn.btn-warning {
+    display: block;
+    margin: 15px auto;
+    height: 40px;
+    width: 40%;
+    background-color: #2F4F4F;
+    border-radius: 5px;
+    font-size: 100%;
+    color: white;
+    border: 3px solid white;
+}
+
+.Ingreso .alta-form button.btn.btn-success:enabled:hover,
+.Ingreso .alta-form button.btn.btn-warning:hover {
+    background-color: white;
+    color: #2F4F4F;
+    cursor: pointer;
+}
+
+.Ingreso .alta-form input {
+    border-radius: 5px;
+}
+
+.Ingreso .alta-form input:focus {
+
+    outline: 2px solid #2F4F4F;
+
+    -webkit-box-shadow: 0px 0px 26px 0px rgba(252, 252, 252, 1);
+    -moz-box-shadow: 0px 0px 26px 0px rgba(252, 252, 252, 1);
+    box-shadow: 0px 0px 26px 0px rgba(252, 252, 252, 1);
+}
+
+.Ingreso .alta-form textarea {
+    border-radius: 5px;
+}
+
+.Ingreso .alta-form textarea:focus {
+    outline: 2px solid #2F4F4F;
+    -webkit-box-shadow: 0px 0px 26px 0px rgba(252, 252, 252, 1);
+    -moz-box-shadow: 0px 0px 26px 0px rgba(252, 252, 252, 1);
+    box-shadow: 0px 0px 26px 0px rgba(252, 252, 252, 1);
+    background-color: white;
+}
+
+.Ingreso .alta-form input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+.Ingreso .alta-form .invalid {
+    background-color: rgba(239, 147, 143, 0.877);
+}
+
+.Ingreso .alta-form input[type="text"]:required:valid,
+.Ingreso .alta-form input[type="number"]:required:valid {
+    border: 2px solid green;
+}
+
+.Ingreso .alta-form input[type="text"]:focus:required:invalid,
+.Ingreso .alta-form input[type="number"]:focus:required:invalid {
+    border: 2px solid red;
+}

@@ -1,23 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import { Navbar } from './components/Navbar';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { RutaNoValida } from './components/RutaNoValida';
+import { Index as Alta } from './components/ALTA/Index';
+import { Index as Inicio } from './components/INICIO/Index';
+import { Index as Contacto } from './components/CONTACTO/Index';
+import { Index as Nosotros } from './components/NOSOTROS/Index';
+import { Index as Carrito } from './components/CARRITO/Index';
+import { Footer } from './components/Footer';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <BrowserRouter>
+
+        <Navbar />
+
+
+        <Routes>
+
+          <Route index element={<Inicio />} />
+
+          <Route path="alta" element={<Alta />} />
+          <Route path="inicio" element={<Inicio />} />
+          <Route path="carrito" element={<Carrito />} />
+          <Route path="nosotros" element={<Nosotros />} />
+          <Route path="contacto" element={<Contacto />} />
+
+
+          <Route path="*" element={<RutaNoValida />} />
+
+        </Routes>
+
+        <Footer />
+      </BrowserRouter>
+
     </div>
   );
 }

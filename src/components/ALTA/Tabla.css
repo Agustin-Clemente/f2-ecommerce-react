@@ -1,0 +1,59 @@
+.Tabla table th {
+    text-transform: uppercase;
+}
+
+.Tabla table tr {
+    text-align: center;
+}
+
+.Tabla table th {
+    background-color: #587272;
+    color: white;
+}
+
+.Tabla table td,
+.Tabla table th {
+
+    border: 1px solid white;
+}
+
+.Tabla table tr {
+    border-top: 2px solid #587272;
+    border-bottom: 2px solid #587272;
+}
+
+.Tabla button.btn.btn-success {
+    background-color: white;
+    color: #587272;
+    border: 2px solid #587272
+}
+
+.Tabla button.btn.btn-success:hover {
+    color: white;
+    background-color: #587272;
+
+}
+
+.Tabla button.btn.btn-outline-success {
+    background-color: rgba(239, 147, 143, 0.877);
+    color: white;
+    border: 2px solid #587272
+}
+
+.Tabla button.btn.btn-success:hover {
+    color: white;
+    background-color: #587272;
+
+}
+
+.Tabla button.btn.btn-danger:hover {
+    background-color: rgba(239, 147, 143, 0.877);
+    color: white;
+    border-color: rgba(239, 147, 143, 0.877);
+}
+
+.Tabla button.btn.btn-danger {
+    color: white;
+    background-color: #587272;
+    border: 2px solid #587272
+}

@@ -1,0 +1,15 @@
+.Nosotros {
+    padding: 20px;
+    height: auto;
+    text-align: center;
+}
+
+.Nosotros h1 {
+    text-align: center;
+}
+
+.Nosotros img {
+    width: 60vw;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
