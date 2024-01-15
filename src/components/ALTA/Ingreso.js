@@ -1,10 +1,12 @@
 import "./Ingreso.css"
+import { ObtenerFoto } from "./ObtenerFoto"
 /* import useForm from "../Hooks/useForm" */
+
 
 export default function Ingreso(props) {
 
     const { nombre, precio, foto, stock, descripcionCorta, descripcionLarga, edadDesde, edadHasta, envio, marca, categoria } = props.producto
-    const { onChange, onSubmit, editarId, invalid } = props
+    const { onChange, onSubmit, editarId, invalid, enviarUrlImagen } = props
 
     /* //VALIDACION
     const initialData = {
@@ -110,6 +112,8 @@ export default function Ingreso(props) {
                     <input type="text" id="foto" className="form-control" value={foto} onChange={onChange} required />
                     {!foto && <div className="alert alert-danger p-1">Este campo es obligatorio</div>}
                 </div>
+
+                <ObtenerFoto enviarUrlImagen = {enviarUrlImagen}/>
 
                 <div className="form-group">
                     <label htmlFor="edadDesde">Edad Desde</label>

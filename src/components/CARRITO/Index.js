@@ -72,7 +72,7 @@ export function Index() {
     }
 
     async function pedir() {
-        const carritoEnviado = await enviarCarrito(carrito)
+        const carritoEnviado = await enviarCarrito({pedido : carrito})
         console.log(carritoEnviado)
         setCarrito([])
     }

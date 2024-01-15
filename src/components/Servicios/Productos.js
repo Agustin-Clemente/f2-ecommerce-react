@@ -1,7 +1,11 @@
 import axios from "axios"
 
+console.log("Ambiente: ", process.env.NODE_ENV)
 //const URL_API_PRODUCTOS = "https://655cc0a425b76d9884fde4c9.mockapi.io/productos/"
-const URL_API_PRODUCTOS = "http://localhost:8080/api/productos/"
+//const URL_API_PRODUCTOS = "http://localhost:8080/api/productos/"
+const URL_API_PRODUCTOS = process.env.NODE_ENV === "production" ? "/api/productos/" : `http://localhost:${process.env.REACT_APP_PORT_SRV_DEV}/api/productos/`
+
+
 
 const proxyProducto = producto => {
     const handler ={

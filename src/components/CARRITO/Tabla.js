@@ -11,7 +11,7 @@ export const Tabla = props => {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>id</th>
+                            {/* <th>id</th> */}
                             <th>nombre</th>
                             <th>precio</th>
                             <th>marca</th>
@@ -27,7 +27,7 @@ export const Tabla = props => {
 
                                 <tr key={producto.id}>
 
-                                    <td>{producto.id}</td>
+                                    {/* <td>{producto.id}</td> */}
                                     <td>{producto.nombre}</td>
                                     <td> ${producto.precio}</td>
 
@@ -41,7 +41,9 @@ export const Tabla = props => {
                                         {producto.cantidad}
                                         <button className="btn btn-info ml-2" onClick={() => incrementarID(producto.id)}> + </button>
                                     </td>
-                                    <td>${producto.subtotal = producto.cantidad * producto.precio}</td>
+                                    <td>
+                                        ${(producto.subtotal = producto.cantidad * producto.precio).toFixed(2)}
+                                    </td>
 
                                     <td>
                                         <button className="btn btn-danger" onClick={() => borrar(producto.id)}> Borrar </button>
@@ -62,13 +64,13 @@ export const Tabla = props => {
                     </tbody>
                     <tfoot>
                         <tr>
+                            {/* <td></td> */}
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td>Total: $ {total}</td>
+                            <td>Total: $ {(total.toFixed(2))}</td>
                             <td></td>
                         </tr>
                     </tfoot>

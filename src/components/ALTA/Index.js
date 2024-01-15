@@ -140,7 +140,11 @@ export function Index() {
         handleClose()
     }
 
-
+    function enviarUrlImagen(url) {
+        const productoClon = {...producto}
+        productoClon.foto = url
+        setProducto(productoClon)
+    }
 
     return (
         <div className="Alta">
@@ -162,7 +166,7 @@ export function Index() {
                 </Modal.Footer>
             </Modal>
 
-            <Ingreso producto={producto} onChange={onChange} onSubmit={onSubmit} editarId={editarId} invalid={formInvalid()} />
+            <Ingreso producto={producto} onChange={onChange} onSubmit={onSubmit} editarId={editarId} invalid={formInvalid()} enviarUrlImagen ={enviarUrlImagen} />
 
             <hr />
 
