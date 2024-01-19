@@ -1,4 +1,16 @@
 .Alta h1, .Alta h2 {
     text-align: center;
+    margin-bottom: 36px;
+    margin-top: 24px;
 }
 
+.Alta button.btn.btn-success.mx-auto{
+    display: block;
+    margin-top: 20px;
+    background-color: #587272;
+    border: 2px solid #587272;
+}
+
+.btn-success.focus, .btn-success:focus, .btn.focus, .btn:focus{
+    box-shadow: none;
+}

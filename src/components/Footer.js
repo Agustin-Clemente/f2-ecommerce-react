@@ -18,9 +18,9 @@ export const Footer = () =>
 
             <section>
                 <h4>Redes</h4>
-                <i className="fa-brands fa-x-twitter" style={{ color: "#ffffff;" }}></i>
-                <i className="fa-brands fa-instagram" style={{ color: "#ffffff;" }}></i>
-                <i className="fa-brands fa-facebook-f" style={{ color: "#ffffff;" }}></i>
+                <a href="https://twitter.com/i/flow/login?redirect_after_login=%2Feducacionit" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-x-twitter" style={{ color: "#ffffff;" }}></i></a>
+                <a href="https://www.instagram.com/educacionit/" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-instagram" style={{ color: "#ffffff;" }}></i></a>
+                <a href="https://www.facebook.com/EducacionIT/" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-facebook-f" style={{ color: "#ffffff;" }}></i></a>
             </section>
 
             <section>

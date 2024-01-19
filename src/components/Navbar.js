@@ -1,7 +1,11 @@
 import { NavLink } from "react-router-dom";
 import "./Navbar.css"
 
-export const Navbar = () =>
+
+
+export function Navbar () {
+
+return (
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
     <NavLink className="navbar-brand" to="/inicio">
@@ -16,7 +20,7 @@ export const Navbar = () =>
     </button>
 
     <div className="collapse navbar-collapse " id="navbarSupportedContent">
-      <ul className="navbar-nav mx-auto ">
+      <ul className="navbar-nav mx-auto">
 
         <li className="nav-item">
           <NavLink className="nav-link" to="/inicio">Inicio <span className="sr-only">(current)</span></NavLink>
@@ -40,10 +44,10 @@ export const Navbar = () =>
 
       </ul>
 
-      <form className="form-inline my-2 my-lg-0 me-3">
+      {/* <form className="form-inline my-2 my-lg-0 me-3">
         <input className="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" />
         <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-      </form>
+      </form> */}
 
       <NavLink className="navbar-brand" to="/carrito">
         <div id="boton-carrito">
@@ -54,3 +58,6 @@ export const Navbar = () =>
     </div>
 
   </nav>
+ 
+)
+}

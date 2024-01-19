@@ -6,7 +6,7 @@ import { ObtenerFoto } from "./ObtenerFoto"
 export default function Ingreso(props) {
 
     const { nombre, precio, foto, stock, descripcionCorta, descripcionLarga, edadDesde, edadHasta, envio, marca, categoria } = props.producto
-    const { onChange, onSubmit, editarId, invalid, enviarUrlImagen } = props
+    const { onChange, onSubmit, editarId, invalid, enviarUrlImagen, form } = props
 
     /* //VALIDACION
     const initialData = {
@@ -64,7 +64,9 @@ export default function Ingreso(props) {
     const {form, errors, handleChange} = useForm(initialData, validarForm) */
 
     return (
-        <div className="Ingreso">
+        
+            <div className="Ingreso">
+                {form && 
             <form className="alta-form" onSubmit={onSubmit} >
                 <div className="form-group">
                     <label htmlFor="nombre">Nombre*</label>
@@ -132,6 +134,8 @@ export default function Ingreso(props) {
 
                 <button disabled={invalid} className={`btn btn-${editarId ? 'warning' : 'success'} mt-3 mb-5`}> {editarId ? "Actualizar" : "Enviar"}</button>
             </form>
+}
         </div>
+    
     )
 }

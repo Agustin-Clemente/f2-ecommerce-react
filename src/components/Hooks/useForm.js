@@ -21,6 +21,10 @@ const useForm = (initialData, validarForm) => {
 
     }
 
+    const borrarForm = () => {
+        setForm(initialData)
+    }
+
     /*  const validacion = () => {
          const err = validarForm(form)
  
@@ -33,7 +37,7 @@ const useForm = (initialData, validarForm) => {
          return errors
      } */
 
-    return { /* validacion, */ handleChange, form, errors }
+    return { /* validacion, */ handleChange, form, errors, borrarForm }
 }
 
 export default useForm

@@ -1,3 +1,5 @@
+
+
 .Nosotros {
     padding: 20px;
     height: auto;
@@ -6,6 +8,7 @@
 
 .Nosotros h1 {
     text-align: center;
+    margin-bottom: 24px;
 }
 
 .Nosotros img {

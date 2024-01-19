@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { enviarFormDataAJax } from '../Servicios/upload'
 import './ObtenerFoto.css'
 
+
+
 export function ObtenerFoto(props){
 
     const {enviarUrlImagen} = props //para hacer uplifting para poder poner la URL en el form de Ingreso, tiene que llegar hasta index
@@ -95,8 +97,12 @@ export function ObtenerFoto(props){
                     <>
                     <progress min="0" max="100" value={porcentaje}></progress> <span>{porcentaje}%</span>
                     </>}
-                    <img src={urlFoto} alt="" />
-                    <label htmlFor="archivo">Suelta tu archivo aquí o haz click</label>
+                    {porcentaje === 100 &&
+                    <>
+                    <img src={urlFoto} alt="Imagen subida OK" />
+                    </> 
+                }
+                    <label htmlFor="archivo">Suelta tu foto aquí o haz click</label>
                    
                 </div>
         </div>

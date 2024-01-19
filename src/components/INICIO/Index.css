@@ -5,6 +5,10 @@
   padding: 25px;
 }
 
+.Inicio .inicio .section-cards .section-cards-header h1{
+  margin-bottom: 36px;
+}
+
 .Inicio .cards-container,
 footer .footer-container {
   display: flex;
@@ -90,4 +94,8 @@ button.btn.btn-primary:hover {
 button.btn.btn-primary {
   background-color: #2F4F4F;
   color: white;
+}
+
+.modal-body section img{
+  width: 90%;
 }

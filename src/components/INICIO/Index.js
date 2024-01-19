@@ -78,7 +78,10 @@ export function Index() {
         }
     }
 
+
+
     return (
+        
         <div className="Inicio">
 
 
@@ -90,7 +93,7 @@ export function Index() {
                 <Modal.Body>
 
                     <section>
-                        <img src={productos.find(p => p.id === verMasId)?.foto} alt="" />
+                        <img src={productos.find(p => p.id === verMasId)?.foto} alt={productos.find(p => p.id === verMasId)?.nombre} />
                         <p><b className="precio">Precio:</b> ${productos.find(p => p.id === verMasId)?.precio}</p>
                         <p><b>Detalles:</b> {productos.find(p => p.id === verMasId)?.descripcionCorta}</p>
                         <p><b>Descripcion:</b> {productos.find(p => p.id === verMasId)?.descripcionLarga}</p>
@@ -140,7 +143,7 @@ export function Index() {
 
 
             <div className="inicio">
-                <div className="section-cards">
+                <div className="section-cards"> 
                     <div className="section-cards-header">
                         <h1>Listado de productos</h1>
                     </div>
@@ -152,8 +155,10 @@ export function Index() {
                         )
                         }
                     </div>
+                    
                 </div>
             </div>
         </div>
+        
     )
 }

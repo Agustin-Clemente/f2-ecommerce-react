@@ -1,14 +1,15 @@
 .ObtenerFoto #drop{
-    border: 3px dashed blue;
-    width: 350px;
+    border: 3px dashed #2c3939;
+    /* width: 350px; */
     height: 150px;
-    margin: 10px 0;
-    background-color: lightgoldenrodyellow;
-    color: red;
+    margin-bottom: 32px;
+    background-color: #799393;
+    color: white;
     text-align: center;
     /*line-height: 150px;*/
     user-select: none;
     padding: 15px;
+    width: 100%;
 }
 
 .ObtenerFoto label{
@@ -24,5 +25,6 @@
 
 .ObtenerFoto img{
     float:right;
-    height: 120px;
+    /* height: 120px; */
+    height: 90%;
 }

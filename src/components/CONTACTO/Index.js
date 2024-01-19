@@ -1,10 +1,16 @@
 import "./Index.css"
 import useForm from "../Hooks/useForm"
+import Toast from 'react-bootstrap/Toast';
+import { useState } from "react";
 
 export function Index() {
 
+    const [showToast, setShowToast] = useState(false);
+
     function onSubmit(e) {
         e.preventDefault()
+        borrarForm()
+        setShowToast(true)
     }
 
     const initialData = {
@@ -13,6 +19,7 @@ export function Index() {
         comentarios: ""
     }
 
+    
     const validarForm = (form) => {
         let isError = false
         let errors = {}
@@ -36,10 +43,11 @@ export function Index() {
         return isError ? errors : null
     }
 
-    const { form, errors, handleChange, /* validacion */ } = useForm(initialData, validarForm)
+    const { form, errors, handleChange, borrarForm /* validacion */ } = useForm(initialData, validarForm)
 
     return (
         <div className="Contacto">
+
 
 
             <h1>Contacto</h1>
@@ -63,8 +71,25 @@ export function Index() {
                     {errors.comentarios && <div className="alert alert-danger p-1">{errors.comentarios}</div>}
                 </div>
 
-                <button>Enviar</button>
+              {/*   {(form.nombre && form.email && form.comentarios)  && <button>Enviar</button>} */}
+                {/* {(!errors.nombre && !errors.email && !errors.comentarios)  && <button style={{backgroundColor: "#2F4F4F",  cursor: "pointer", color: "white"}}>Enviar</button>} */}
+                {(form.email && form.comentarios && form.nombre)  && <button>Enviar</button>}
+                
+                {/* <button>Enviar</button> */}
+                
+            
             </form>
+
+            <Toast onClose={() => setShowToast(false)} show={showToast} delay={5000} autohide
+                style={{
+                    position: 'fixed',
+                    bottom: '0', right: '0',
+                    backgroundColor: '#587272'
+                }} >
+                <Toast.Header>
+                    <strong className="me-auto">Mensaje enviado</strong>
+                </Toast.Header>
+            </Toast>
         </div>
     )
 }

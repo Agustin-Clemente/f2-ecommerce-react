@@ -90,3 +90,7 @@
 .Ingreso .alta-form input[type="number"]:focus:required:invalid {
     border: 2px solid red;
 }
+
+.Ingreso .alert.alert-danger.p-1{
+    width: 100%;
+}

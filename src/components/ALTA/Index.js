@@ -28,6 +28,8 @@ export function Index() {
     const [editarId, setEditarId] = useState(null)
     const [borrarId, setBorrarId] = useState(null)
 
+    const [form, setForm] = useState(false);
+
     //CONTROLES DE MODAL
     const [show, setShow] = useState(false);
 
@@ -76,6 +78,8 @@ export function Index() {
 
         setProductos(productosClon)
         borrarForm()
+        mostrar()
+        window.scrollTo(0,0)
     }
 
     function borrarForm() {
@@ -109,11 +113,13 @@ export function Index() {
 
     function editar(id) {
         if (!editarId || editarId !== id) {
+            mostrar()
             setEditarId(id)
             setProducto(productos.find(p => p.id === id))
         } else {
             setEditarId(null)
             borrarForm()
+            mostrar()
         }
     }
 
@@ -146,10 +152,18 @@ export function Index() {
         setProducto(productoClon)
     }
 
+    function mostrar() {
+        setForm(!form)
+    }
+
     return (
         <div className="Alta">
 
             <h1>Alta de productos</h1>
+
+            {!editarId &&
+            <button className="btn btn-success mx-auto"onClick={mostrar}>{form ? "Cerrar" : "Agregar producto"}</button>
+}
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -166,7 +180,7 @@ export function Index() {
                 </Modal.Footer>
             </Modal>
 
-            <Ingreso producto={producto} onChange={onChange} onSubmit={onSubmit} editarId={editarId} invalid={formInvalid()} enviarUrlImagen ={enviarUrlImagen} />
+            <Ingreso producto={producto} onChange={onChange} onSubmit={onSubmit} editarId={editarId} invalid={formInvalid()} enviarUrlImagen ={enviarUrlImagen} form={form}/>
 
             <hr />
 

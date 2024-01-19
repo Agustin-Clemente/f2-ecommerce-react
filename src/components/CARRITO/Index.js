@@ -97,19 +97,59 @@ export function Index() {
             valueProp: "security_details"
         },
         visual: {
-            buttonBackground: "black"
+            buttonBackground: "white"
         }
     }
+
+    function getQueryVariable(variable) {
+        var query = window.location.hash.substring(1);
+        var vars = query.split("&");
+        for (var i=0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if(pair[0] === variable) {
+                return pair[1];
+            }
+        }
+        return "null";
+     }
 
     const onReady = async () => {
         console.log("On ready MP")
 
-        const queryParameters = new URLSearchParams(window.location.search); //agarra parametros de la URL
+        const status = getQueryVariable("status")
+        console.log(status)
+        const payment_id = getQueryVariable("payment_id")
+        console.log(payment_id)
+        const merchant_order_id = getQueryVariable("merchant_order_id")
+        console.log(merchant_order_id)
 
         const compraParam = {}
+        compraParam.payment_id = payment_id
+        compraParam.status = status 
+        compraParam.merchant_order_id = merchant_order_id 
+        
+
+        const queryParameters = new URLSearchParams(window.location.search); //agarra parametros de la URL
+        /* //const queryParameters = new URLSearchParams(`${window.location.origin}/#/carrito/`.search); //agarra parametros de la URL
+        //const queryParameters = new URLSearchParams(window.location.origin.search); //agarra parametros de la URL
+        //const queryParameters = new URLSearchParams("http://localhost:3000/#/carrito/".search); //agarra parametros de la URL
+        const url = new URL(window.location);
+        const queryParameters = new URLSearchParams(url.href.search); //agarra parametros de la URL
+        console.log(window.location.toString())
+        console.log(url)
+        console.log(url.href)
+        console.log(url.hash)
+        console.log(window.location.hash)
+        console.log(window.location.pathname)
+        console.log(window.location.origin)
+        console.log(queryParameters)
+        console.log(new URLSearchParams(window.location).has('status')); */
+        console.log(queryParameters)
+
+       /*  const compraParam = {}
         compraParam.payment_id = queryParameters.get("payment_id") || "null"
         compraParam.status = queryParameters.get("status") || "null"
-        compraParam.merchant_order_id = queryParameters.get("merchant_order_id") || "null"
+        compraParam.merchant_order_id = queryParameters.get("merchant_order_id") || "null" */
 
         if (compraParam.payment_id !== "null" && compraParam.status !== "null" && compraParam.merchant_order_id !== "null") {
             if (compraParam.status !== compraStatus.status) {
@@ -117,6 +157,9 @@ export function Index() {
 
                 if (compraParam.status === "approved") {
                     await pedir(compraParam)
+                    //setTimeout(()=> window.location.assign(window.location.origin + "#/carrito"), 5000)
+                    window.location.assign(window.location.origin + "#/carrito")
+                    
                 }
             }
         }
@@ -166,14 +209,14 @@ export function Index() {
                     {carrito.length === 0 &&
                         <>
                             <h3>Tu carrito aún está vacío</h3>
-                            <img src="https://img.freepik.com/vector-gratis/hombre-compras-supermercado_74855-7612.jpg?w=740&t=st=1695939944~exp=1695940544~hmac=e56019f286e11fe1cd5ccd8169f8a7272da92ebd627cfebdec67bfb95b143ccc" alt="imagen carrito"></img>
+                            <img src="https://classic-nomenclatur.000webhostapp.com/uploads/1705619754992-hombre-compras-supermercado_74855-7612.jpg" alt="imagen carrito"></img>
                         </>
                     }
 
                     {carrito.length > 0 &&
                         <>
                             <Tabla carrito={carrito} borrar={borrar} incrementarID={incrementarID} decrementarID={decrementarID} />
-                            <button className="btn carrito__borrar mr-3" onClick={modalBorrarAll}>Borrar</button>
+                            <button className="btn carrito__borrar mr-3" onClick={modalBorrarAll}>Borrar todo</button>
 
                             <div id="wallet_container">
                                 <Wallet

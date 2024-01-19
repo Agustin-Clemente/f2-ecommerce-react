@@ -30,9 +30,10 @@ export async function getPreference(carrito) {
         unit_price: Number(producto.precio) 
     })),
     back_urls: {
-        "success": window.location.origin + window.location.pathname,
-        "failure": window.location.origin + window.location.pathname,
-        "pending": window.location.origin + window.location.pathname
+        "success": window.location.origin + "#/carrito" + window.location.pathname,
+        //"success": window.location.toString(),
+        "failure": window.location.origin + window.location.pathname + "#/carrito",
+        "pending": window.location.origin + window.location.pathname + "#/carrito",
     },
     auto_return: "approved",
     }
