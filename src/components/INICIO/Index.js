@@ -11,6 +11,12 @@ export function Index() {
 
     const [productos, setProductos] = useState([])
     const [carrito, setCarrito] = useLocalStorage('carrito', [])
+    const [busqueda, setBusqueda] = useState("");
+
+    
+    /* useEffect(() =>{
+        setProductos(productos);
+    }, [productos]) */
 
     //TOAST
     const [showToastOK, setShowToastOK] = useState(false);
@@ -78,11 +84,22 @@ export function Index() {
         }
     }
 
+    function buscarProducto(producto) {
+            return function(x){
+                
+            return  (x.nombre).normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(producto.toLowerCase()) || x.nombre.toLowerCase().includes(producto.toLowerCase()) || !producto
+        } 
+    }
+
+    
+
 
 
     return (
         
         <div className="Inicio">
+
+                     
 
 
             {/* MODAL */}
@@ -148,14 +165,47 @@ export function Index() {
                         <h1>Listado de productos</h1>
                     </div>
 
+                    <div className="barra-busqueda">
+                        <label htmlFor="search-form">
+                            <input
+                                type="search"
+                                name="search-form"
+                                id="search-form"
+                                placeholder="Buscar..."
+                                value={busqueda}
+                                onChange={(e) => setBusqueda(e.target.value)}
+                            />
+                            <span className="sr-only">Buscar...</span>
+                        </label>
+                    </div>
 
+                    {/* {busqueda &&
+                    
+                    <div className="cards-container">
+                        {productos.filter(buscarProducto(busqueda)).map((producto, index) =>
+                            <Card key={index} producto={producto} agregarCarritoID={agregarCarritoID} verMasID={verMasID} />
+                        )
+                        }
+                    </div>
+                    }
+
+                    {!busqueda &&
+                    
                     <div className="cards-container">
                         {productos.map((producto, index) =>
                             <Card key={index} producto={producto} agregarCarritoID={agregarCarritoID} verMasID={verMasID} />
                         )
                         }
                     </div>
-                    
+                    }    */}
+
+                    <div className="cards-container">
+                        
+                    {productos.filter(buscarProducto(busqueda))?.map((producto, index) =>
+                            <Card key={index} producto={producto} agregarCarritoID={agregarCarritoID} verMasID={verMasID} />
+                        )
+                        }
+                    </div>
                 </div>
             </div>
         </div>

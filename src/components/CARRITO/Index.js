@@ -195,20 +195,20 @@ export function Index() {
                     <h1>Carrito de compras</h1>
                     {
                         compraStatus.status !== "null" &&
-                        <div className={`alert alert-${compraStatus.status === "approved" ? "success" : "danger"} w-50 m-auto`}>
+                        <div className={`alert alert-${compraStatus.status === "approved" ? "success" : "danger"} w-75 mb-4 mx-auto`}>
                             <h2>Estado de compra</h2>
                             <hr />
-                            <ul>
-                                <li><h4>Payment_id: {compraStatus.payment_id}</h4></li>
-                                <li><h4>Status: {compraStatus.status}</h4></li>
-                                <li><h4>Merchant_order_id: {compraStatus.merchant_order_id}</h4></li>
+                            <ul className='estadoCompra'>
+                                <li><h4>Pago: {compraStatus.payment_id}</h4></li>
+                                <li><h4>Estado: {compraStatus.status==="approved"? "Aprobado":"Rechazado"}</h4></li>
+                                <li><h4>Orden: {compraStatus.merchant_order_id}</h4></li>
                             </ul>
                         </div>
                     }
 
                     {carrito.length === 0 &&
                         <>
-                            <h3>Tu carrito aún está vacío</h3>
+                            <h3>Tu carrito está vacío</h3>
                             <img src="https://classic-nomenclatur.000webhostapp.com/uploads/1705619754992-hombre-compras-supermercado_74855-7612.jpg" alt="imagen carrito"></img>
                         </>
                     }

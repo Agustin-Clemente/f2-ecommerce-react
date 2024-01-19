@@ -49,6 +49,12 @@
 
 }
 
+
+.Carrito ul.estadoCompra {
+    list-style: none;
+    padding-left: 0;
+}
+
 @media(max-width:768px) {
     .Carrito section img {
         display: block;
