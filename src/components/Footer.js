@@ -29,5 +29,5 @@ export const Footer = () =>
 
 
         </div>
-        <h6 className="pb-1">Copyright 2023</h6>
+        <h6 className="pb-1">Copyright 2024</h6>
     </footer>

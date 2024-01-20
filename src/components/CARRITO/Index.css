@@ -46,9 +46,7 @@
 
 .Carrito section img {
     height: 50vh;
-
 }
-
 
 .Carrito ul.estadoCompra {
     list-style: none;
@@ -67,14 +65,12 @@
     }
 }
 
-
 .Carrito table {
     border-collapse: collapse;
     margin: 5px auto;
 }
 
-th,
-td {
+th, td {
     border: 1px solid black;
     width: 80px;
     height: 30px;

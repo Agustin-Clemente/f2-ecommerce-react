@@ -12,11 +12,11 @@ import { Footer } from './components/Footer';
 function App() {
   return (
     <div className="App">
- 
- {/* HAGO ESTO PARA MANTENER LAS RUTAS EN EL SERVIDOR*/}
+
+      {/* HAGO ESTO PARA MANTENER LAS RUTAS EN EL SERVIDOR*/}
       <HashRouter>
-        <Navbar/>
-        
+        <Navbar />
+
         <Routes>
 
           <Route index element={<Inicio />} />

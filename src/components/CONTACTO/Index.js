@@ -19,7 +19,6 @@ export function Index() {
         comentarios: ""
     }
 
-    
     const validarForm = (form) => {
         let isError = false
         let errors = {}
@@ -43,41 +42,34 @@ export function Index() {
         return isError ? errors : null
     }
 
-    const { form, errors, handleChange, borrarForm /* validacion */ } = useForm(initialData, validarForm)
+    const { form, errors, handleChange, borrarForm } = useForm(initialData, validarForm)
 
     return (
         <div className="Contacto">
-
-
 
             <h1>Contacto</h1>
 
             <form className="contacto-form" onSubmit={onSubmit}>
                 <div className="form-group">
                     <label htmlFor="nombre">nombre *</label>
-                    <input type="text" name="nombre" id="nombre" value={form.nombre} onChange={handleChange} /* onBlur={validacion} */ required />
+                    <input type="text" name="nombre" id="nombre" value={form.nombre} onChange={handleChange} required />
                     {errors.nombre && <div className="alert alert-danger p-1">{errors.nombre}</div>}
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="email">email *</label>
-                    <input type="email" name="email" id="email" value={form.email} onChange={handleChange} /* onBlur={validacion} */ required />
+                    <input type="email" name="email" id="email" value={form.email} onChange={handleChange} required />
                     {errors.email && <div className="alert alert-danger p-1">{errors.email}</div>}
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="comentarios">comentarios *</label>
-                    <textarea name="comentarios" id="comentarios" value={form.comentarios} rows="10" cols="50" onChange={handleChange} /* onBlur={validacion}  */ required></textarea>
+                    <textarea name="comentarios" id="comentarios" value={form.comentarios} rows="10" cols="50" onChange={handleChange} required></textarea>
                     {errors.comentarios && <div className="alert alert-danger p-1">{errors.comentarios}</div>}
                 </div>
 
-              {/*   {(form.nombre && form.email && form.comentarios)  && <button>Enviar</button>} */}
-                {/* {(!errors.nombre && !errors.email && !errors.comentarios)  && <button style={{backgroundColor: "#2F4F4F",  cursor: "pointer", color: "white"}}>Enviar</button>} */}
-                {(form.email && form.comentarios && form.nombre)  && <button>Enviar</button>}
-                
-                {/* <button>Enviar</button> */}
-                
-            
+                {(form.email && form.comentarios && form.nombre) && <button>Enviar</button>}
+
             </form>
 
             <Toast onClose={() => setShowToast(false)} show={showToast} delay={5000} autohide

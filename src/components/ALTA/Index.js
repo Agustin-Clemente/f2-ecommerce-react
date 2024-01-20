@@ -41,6 +41,7 @@ export function Index() {
         async function pedir() {
             const productos = await getProductos()
             setProductos(productos)
+            console.log(form)
         }
         pedir()
     }, [])
@@ -60,7 +61,7 @@ export function Index() {
             const productoGuardado = await guardarProductos(producto)
 
             //Guardo en forma local
-            //const productosClon = [...productos]
+
             productosClon.push(productoGuardado)
 
         } else {
@@ -71,7 +72,6 @@ export function Index() {
 
             const index = productosClon.findIndex(p => p.id === productoActualizado.id)
             productosClon.splice(index, 1, producto)
-            //setProductos(productosClon)
 
             setEditarId(null)
         }
@@ -79,7 +79,7 @@ export function Index() {
         setProductos(productosClon)
         borrarForm()
         mostrar()
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0)
     }
 
     function borrarForm() {
@@ -113,7 +113,7 @@ export function Index() {
 
     function editar(id) {
         if (!editarId || editarId !== id) {
-            mostrar()
+            if(!form) mostrar()
             setEditarId(id)
             setProducto(productos.find(p => p.id === id))
         } else {
@@ -147,13 +147,15 @@ export function Index() {
     }
 
     function enviarUrlImagen(url) {
-        const productoClon = {...producto}
+        const productoClon = { ...producto }
         productoClon.foto = url
         setProducto(productoClon)
     }
 
     function mostrar() {
         setForm(!form)
+        console.log(form)
+
     }
 
     return (
@@ -162,8 +164,8 @@ export function Index() {
             <h1>Alta de productos</h1>
 
             {!editarId &&
-            <button className="btn btn-success mx-auto"onClick={mostrar}>{form ? "Cerrar" : "Agregar producto"}</button>
-}
+                <button className="btn btn-success mx-auto" onClick={mostrar}>{form ? "Cerrar" : "Agregar producto"}</button>
+            }
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -180,7 +182,7 @@ export function Index() {
                 </Modal.Footer>
             </Modal>
 
-            <Ingreso producto={producto} onChange={onChange} onSubmit={onSubmit} editarId={editarId} invalid={formInvalid()} enviarUrlImagen ={enviarUrlImagen} form={form}/>
+            <Ingreso producto={producto} onChange={onChange} onSubmit={onSubmit} editarId={editarId} invalid={formInvalid()} enviarUrlImagen={enviarUrlImagen} form={form} />
 
             <hr />
 
@@ -189,9 +191,6 @@ export function Index() {
             <table></table>
 
         </div>
-
-
-
 
     )
 }

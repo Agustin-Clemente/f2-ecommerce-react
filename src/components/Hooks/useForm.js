@@ -1,4 +1,3 @@
-/* import { event } from "jquery" */
 import { useState } from "react"
 
 const useForm = (initialData, validarForm) => {
@@ -18,26 +17,14 @@ const useForm = (initialData, validarForm) => {
         }
 
         return errors
-
     }
 
     const borrarForm = () => {
         setForm(initialData)
     }
 
-    /*  const validacion = () => {
-         const err = validarForm(form)
- 
-         if (err === null) {
-             console.log("Bien")
-         } else {
-             setErrors(err)
-         }
- 
-         return errors
-     } */
 
-    return { /* validacion, */ handleChange, form, errors, borrarForm }
+    return { handleChange, form, errors, borrarForm }
 }
 
 export default useForm

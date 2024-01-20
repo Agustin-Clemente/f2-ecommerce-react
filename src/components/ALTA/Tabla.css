@@ -1,25 +1,17 @@
 .Tabla table th {
     text-transform: uppercase;
-}
-
-.Tabla table tr {
-    text-align: center;
-}
-
-.Tabla table th {
     background-color: #587272;
     color: white;
 }
 
-.Tabla table td,
-.Tabla table th {
-
-    border: 1px solid white;
-}
-
 .Tabla table tr {
+    text-align: center;
     border-top: 2px solid #587272;
     border-bottom: 2px solid #587272;
+}
+
+.Tabla table td, .Tabla table th {
+    border: 1px solid white;
 }
 
 .Tabla button.btn.btn-success {
@@ -31,7 +23,6 @@
 .Tabla button.btn.btn-success:hover {
     color: white;
     background-color: #587272;
-
 }
 
 .Tabla button.btn.btn-outline-success {
@@ -43,7 +34,6 @@
 .Tabla button.btn.btn-success:hover {
     color: white;
     background-color: #587272;
-
 }
 
 .Tabla button.btn.btn-danger:hover {
@@ -57,7 +47,3 @@
     background-color: #587272;
     border: 2px solid #587272
 }
-
-/* .Tabla .table img{
-    height: 100%;
-} */

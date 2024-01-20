@@ -1,35 +1,23 @@
 .Card button {
   font-weight: bold;
-  background: var(blue);
-  color: var(white);
   padding: 0.75rem 1.75rem;
   border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 5px;
-}
-
-
-.Card button:hover {
-  -webkit-box-shadow: 0px 0px 26px 14px rgba(47, 79, 79, 1);
-  -moz-box-shadow: 0px 0px 26px 14px rgba(47, 79, 79, 1);
-  box-shadow: 0px 0px 26px 14px rgba(47, 79, 79, 1);
-}
-
-.Card button:hover {
-  background-color: white;
-  color: #2F4F4F;
-}
-
-.btn-group,
-.Card button {
-  display: inline;
-  margin-bottom: 25px;
-}
-
-.Card button {
   color: white;
   background-color: #2F4F4F;
   cursor: pointer;
   margin-left: 5px ;
   margin-right: 5px 
+}
+
+.Card button:hover {
+  -webkit-box-shadow: 0px 0px 26px 14px rgba(47, 79, 79, 1);
+  -moz-box-shadow: 0px 0px 26px 14px rgba(47, 79, 79, 1);
+  box-shadow: 0px 0px 26px 14px rgba(47, 79, 79, 1);
+  background-color: white;
+  color: #2F4F4F;
+}
+
+.btn-group, .Card button {
+  display: inline;
+  margin-bottom: 25px;
 }

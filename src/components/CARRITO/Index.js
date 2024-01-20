@@ -1,3 +1,4 @@
+import './pago.js'
 import { useState } from 'react'
 import { useLocalStorage } from '../Hooks/useLocalStorage'
 import { enviarCarrito, getPreference } from '../Servicios/Carrito'
@@ -5,8 +6,6 @@ import { Tabla } from './Tabla'
 import './Index.css'
 import { Button, Modal, Toast } from 'react-bootstrap'
 
-
-import './pago.js'
 import { Wallet } from '@mercadopago/sdk-react'
 
 
@@ -68,7 +67,6 @@ export function Index() {
         } else {
             setShowToastNOT(true)
         }
-
     }
 
     function decrementarID(id) {
@@ -82,11 +80,8 @@ export function Index() {
 
     async function pedir(compra) {
         const carritoEnviado = await enviarCarrito({ compra: compra, pedido: carrito })
-        console.log("Envio carrito...")
         console.log(carritoEnviado)
-        console.log("Seteo carrito vacio...")
         setCarrito([])
-        console.log("Carrito seteado vacio");
         //window.walletBrickController.unmount(); //para destruir brick
     }
 
@@ -104,52 +99,33 @@ export function Index() {
     function getQueryVariable(variable) {
         var query = window.location.hash.substring(1);
         var vars = query.split("&");
-        for (var i=0; i < vars.length; i++) {
+        for (var i = 0; i < vars.length; i++) {
             var pair = vars[i].split("=");
-            if(pair[0] === variable) {
+            if (pair[0] === variable) {
                 return pair[1];
             }
         }
         return "null";
-     }
+    }
 
     const onReady = async () => {
         console.log("On ready MP")
-
-        const status = getQueryVariable("status")
-        console.log(status)
-        const payment_id = getQueryVariable("payment_id")
-        console.log(payment_id)
-        const merchant_order_id = getQueryVariable("merchant_order_id")
-        console.log(merchant_order_id)
-
         const compraParam = {}
-        compraParam.payment_id = payment_id
-        compraParam.status = status 
-        compraParam.merchant_order_id = merchant_order_id 
+        const status = getQueryVariable("status")
+        const payment_id = getQueryVariable("payment_id")
+        const merchant_order_id = getQueryVariable("merchant_order_id")
+
         
+        compraParam.payment_id = payment_id || "null"
+        compraParam.status = status || "null"
+        compraParam.merchant_order_id = merchant_order_id || "null"
 
-        const queryParameters = new URLSearchParams(window.location.search); //agarra parametros de la URL
-        /* //const queryParameters = new URLSearchParams(`${window.location.origin}/#/carrito/`.search); //agarra parametros de la URL
-        //const queryParameters = new URLSearchParams(window.location.origin.search); //agarra parametros de la URL
-        //const queryParameters = new URLSearchParams("http://localhost:3000/#/carrito/".search); //agarra parametros de la URL
-        const url = new URL(window.location);
-        const queryParameters = new URLSearchParams(url.href.search); //agarra parametros de la URL
-        console.log(window.location.toString())
-        console.log(url)
-        console.log(url.href)
-        console.log(url.hash)
-        console.log(window.location.hash)
-        console.log(window.location.pathname)
-        console.log(window.location.origin)
-        console.log(queryParameters)
-        console.log(new URLSearchParams(window.location).has('status')); */
-        console.log(queryParameters)
 
-       /*  const compraParam = {}
-        compraParam.payment_id = queryParameters.get("payment_id") || "null"
-        compraParam.status = queryParameters.get("status") || "null"
-        compraParam.merchant_order_id = queryParameters.get("merchant_order_id") || "null" */
+        /* const queryParameters = new URLSearchParams(window.location.search); //agarra parametros de la URL
+          const compraParam = {}
+         compraParam.payment_id = queryParameters.get("payment_id") || "null"
+         compraParam.status = queryParameters.get("status") || "null"
+         compraParam.merchant_order_id = queryParameters.get("merchant_order_id") || "null" */
 
         if (compraParam.payment_id !== "null" && compraParam.status !== "null" && compraParam.merchant_order_id !== "null") {
             if (compraParam.status !== compraStatus.status) {
@@ -159,7 +135,6 @@ export function Index() {
                     await pedir(compraParam)
                     //setTimeout(()=> window.location.assign(window.location.origin + "#/carrito"), 5000)
                     window.location.assign(window.location.origin + "#/carrito")
-                    
                 }
             }
         }
@@ -183,96 +158,90 @@ export function Index() {
                     reject(error)
                 })
         })
-
     }
-
 
 
     return (
         <div className="Carrito">
-            
-                
-                    <h1>Carrito de compras</h1>
-                    {
-                        compraStatus.status !== "null" &&
-                        <div className={`alert alert-${compraStatus.status === "approved" ? "success" : "danger"} w-75 mb-4 mx-auto`}>
-                            <h2>Estado de compra</h2>
-                            <hr />
-                            <ul className='estadoCompra'>
-                                <li><h4>Pago: {compraStatus.payment_id}</h4></li>
-                                <li><h4>Estado: {compraStatus.status==="approved"? "Aprobado":"Rechazado"}</h4></li>
-                                <li><h4>Orden: {compraStatus.merchant_order_id}</h4></li>
-                            </ul>
-                        </div>
-                    }
 
-                    {carrito.length === 0 &&
-                        <>
-                            <h3>Tu carrito está vacío</h3>
-                            <img src="https://classic-nomenclatur.000webhostapp.com/uploads/1705619754992-hombre-compras-supermercado_74855-7612.jpg" alt="imagen carrito"></img>
-                        </>
-                    }
+            <h1>Carrito de compras</h1>
+            {
+                compraStatus.status !== "null" &&
+                <div className={`alert alert-${compraStatus.status === "approved" ? "success" : "danger"} w-75 mb-4 mx-auto`}>
+                    <h2>Estado de compra</h2>
+                    <hr />
+                    <ul className='estadoCompra'>
+                        <li><h4>Pago: {compraStatus.payment_id}</h4></li>
+                        <li><h4>Estado: {compraStatus.status === "approved" ? "Aprobado" : "Rechazado"}</h4></li>
+                        <li><h4>Orden: {compraStatus.merchant_order_id}</h4></li>
+                    </ul>
+                </div>
+            }
 
-                    {carrito.length > 0 &&
-                        <>
-                            <Tabla carrito={carrito} borrar={borrar} incrementarID={incrementarID} decrementarID={decrementarID} />
-                            <button className="btn carrito__borrar mr-3" onClick={modalBorrarAll}>Borrar todo</button>
+            {carrito.length === 0 &&
+                <>
+                    <h3>Tu carrito está vacío</h3>
+                    <img src="https://classic-nomenclatur.000webhostapp.com/uploads/1705619754992-hombre-compras-supermercado_74855-7612.jpg" alt="imagen carrito"></img>
+                </>
+            }
 
-                            <div id="wallet_container">
-                                <Wallet
-                                    customization={customization}
-                                    onReady={onReady}
-                                    onError={onError}
-                                    onSubmit={onSubmit} 
-                                    />
-                              
-                            </div>
-                        </>
-                    }
+            {carrito.length > 0 &&
+                <>
+                    <Tabla carrito={carrito} borrar={borrar} incrementarID={incrementarID} decrementarID={decrementarID} />
+                    <button className="btn carrito__borrar mr-3" onClick={modalBorrarAll}>Borrar todo</button>
 
-                    
-                
-                <Modal show={show} onHide={handleClose}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Borrar producto</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>¿Desea eliminar este producto del carrito?</Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={handleClose}>
-                                Cancelar
-                            </Button>
-                            <Button variant="primary" onClick={borrarID}>
-                                Aceptar
-                            </Button>
-                        </Modal.Footer>
-                    </Modal>
+                    <div id="wallet_container">
+                        <Wallet
+                            customization={customization}
+                            onReady={onReady}
+                            onError={onError}
+                            onSubmit={onSubmit}
+                        />
+                    </div>
+                </>
+            }
 
-                    <Modal show={showCarrito} onHide={handleCloseCarrito}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Borrar carrito</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>¿Desea eliminar el carrito?</Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={handleCloseCarrito}>
-                                Cancelar
-                            </Button>
-                            <Button variant="primary" onClick={borrarAll}>
-                                Aceptar
-                            </Button>
-                        </Modal.Footer>
-                    </Modal>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Borrar producto</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>¿Desea eliminar este producto del carrito?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Cancelar
+                    </Button>
+                    <Button variant="primary" onClick={borrarID}>
+                        Aceptar
+                    </Button>
+                </Modal.Footer>
+            </Modal>
 
-                    <Toast onClose={() => setShowToastNOT(false)} show={showToastNOT} delay={2000} autohide
-                        style={{
-                            position: 'fixed',
-                            bottom: '0', right: '0',
-                            backgroundColor: 'red'
-                        }} >
-                        <Toast.Header>
-                            <strong className="me-auto">No hay más stock</strong>
-                        </Toast.Header>
-                    </Toast>
-           
+            <Modal show={showCarrito} onHide={handleCloseCarrito}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Borrar carrito</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>¿Desea eliminar el carrito?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseCarrito}>
+                        Cancelar
+                    </Button>
+                    <Button variant="primary" onClick={borrarAll}>
+                        Aceptar
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+            <Toast onClose={() => setShowToastNOT(false)} show={showToastNOT} delay={2000} autohide
+                style={{
+                    position: 'fixed',
+                    bottom: '0', right: '0',
+                    backgroundColor: 'red'
+                }} >
+                <Toast.Header>
+                    <strong className="me-auto">No hay más stock</strong>
+                </Toast.Header>
+            </Toast>
+
         </div>
     )
 }

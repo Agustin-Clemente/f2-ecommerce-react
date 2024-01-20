@@ -11,7 +11,6 @@ export const Tabla = props => {
                 <table className="table">
                     <thead>
                         <tr>
-                            {/* <th>id</th> */}
                             <th>nombre</th>
                             <th>precio</th>
                             <th>marca</th>
@@ -27,12 +26,9 @@ export const Tabla = props => {
 
                                 <tr key={producto.id}>
 
-                                    {/* <td>{producto.id}</td> */}
                                     <td>{producto.nombre}</td>
                                     <td> ${producto.precio}</td>
-
                                     <td> {producto.marca}</td>
-
 
                                     <td><img width="100px" src={producto.foto} alt={"foto de " + producto.nombre} /></td>
 
@@ -60,11 +56,9 @@ export const Tabla = props => {
                         }
 
 
-
                     </tbody>
                     <tfoot>
                         <tr>
-                            {/* <td></td> */}
                             <td></td>
                             <td></td>
                             <td></td>
@@ -76,7 +70,6 @@ export const Tabla = props => {
                     </tfoot>
                 </table>
             </div>
-
         </div>
     )
 }

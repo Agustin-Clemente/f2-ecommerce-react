@@ -13,10 +13,6 @@ export function Index() {
     const [carrito, setCarrito] = useLocalStorage('carrito', [])
     const [busqueda, setBusqueda] = useState("");
 
-    
-    /* useEffect(() =>{
-        setProductos(productos);
-    }, [productos]) */
 
     //TOAST
     const [showToastOK, setShowToastOK] = useState(false);
@@ -68,14 +64,6 @@ export function Index() {
 
     }
 
-    /*  async function goComprar() {
-         const id = verMasId
- 
-         agregarCarritoID(id)
-         handleClose()
-     } */
-
-
 
     function verMasID(id) {
         if (id) {
@@ -85,22 +73,17 @@ export function Index() {
     }
 
     function buscarProducto(producto) {
-            return function(x){
-                
-            return  (x.nombre).normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(producto.toLowerCase()) || x.nombre.toLowerCase().includes(producto.toLowerCase()) || !producto
-        } 
-    }
+        return function (x) {
 
-    
+            return (x.nombre).normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(producto.toLowerCase()) || x.nombre.toLowerCase().includes(producto.toLowerCase()) || !producto
+        }
+    }
 
 
 
     return (
-        
+
         <div className="Inicio">
-
-                     
-
 
             {/* MODAL */}
             <Modal show={show} onHide={handleClose}>
@@ -160,7 +143,7 @@ export function Index() {
 
 
             <div className="inicio">
-                <div className="section-cards"> 
+                <div className="section-cards">
                     <div className="section-cards-header">
                         <h1>Listado de productos</h1>
                     </div>
@@ -179,29 +162,9 @@ export function Index() {
                         </label>
                     </div>
 
-                    {/* {busqueda &&
-                    
                     <div className="cards-container">
-                        {productos.filter(buscarProducto(busqueda)).map((producto, index) =>
-                            <Card key={index} producto={producto} agregarCarritoID={agregarCarritoID} verMasID={verMasID} />
-                        )
-                        }
-                    </div>
-                    }
 
-                    {!busqueda &&
-                    
-                    <div className="cards-container">
-                        {productos.map((producto, index) =>
-                            <Card key={index} producto={producto} agregarCarritoID={agregarCarritoID} verMasID={verMasID} />
-                        )
-                        }
-                    </div>
-                    }    */}
-
-                    <div className="cards-container">
-                        
-                    {productos.filter(buscarProducto(busqueda))?.map((producto, index) =>
+                        {productos.filter(buscarProducto(busqueda))?.map((producto, index) =>
                             <Card key={index} producto={producto} agregarCarritoID={agregarCarritoID} verMasID={verMasID} />
                         )
                         }
@@ -209,6 +172,6 @@ export function Index() {
                 </div>
             </div>
         </div>
-        
+
     )
 }
